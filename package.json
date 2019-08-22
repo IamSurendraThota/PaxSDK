@@ -1,0 +1,23 @@
+{
+  "name": "paxsdk",
+  "version": "0.0.1",
+  "description": "",
+  "cordova": {
+    "id": "paxsdk",
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "plugman": "undefined3.0.1"
+  },
+  "devDependencies": {
+    "plugman": "undefined3.0.1"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "surendra",
+  "license": "ISC"
+}

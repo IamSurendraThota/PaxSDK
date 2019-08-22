@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin id="paxsdk" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>
+		PaxSDK
+	</name>
+	<js-module name="PaxSDK" src="www/PaxSDK.js">
+		<clobbers target="cordova.plugins.PaxSDK" />
+	</js-module>
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="PaxSDK">
+				<param name="android-package" value="paxsdk.PaxSDK" />
+			</feature>
+		</config-file>
+		<config-file parent="/*" target="AndroidManifest.xml">
+		</config-file>
+		<source-file src="src/android/PaxSDK.java" target-dir="src/paxsdk/PaxSDK" />
+		<source-file src="src/android/jniLibs/armeabi/libDeviceConfig.so" target-dir="jniLibs/armeabi" />
+		<lib-file src="src/android/libs/NeptuneLiteApi_V3.07.01_20190808.jar" />
+		<resource-file src="src/android/res/drawable/baharanlogo.png" target="res/drawable/baharanlogo.png" />
+	</platform>
+</plugin>
