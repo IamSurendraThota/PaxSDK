@@ -13,6 +13,7 @@
 			</feature>
 		</config-file>
 		<config-file parent="/*" target="AndroidManifest.xml">
+		<framework src="src/android/paxsdk.gradle" custom="true" type="gradleReference"/>
 		</config-file>
 		<source-file src="src/android/PaxSDK.java" target-dir="src/paxsdk/PaxSDK" />
 		<source-file src="src/android/jniLibs/armeabi/libDeviceConfig.so" target-dir="jniLibs/armeabi" />
