@@ -109,7 +109,7 @@ public class PaxSDK extends CordovaPlugin {
                 printer.printStr("_______________________________\n", null);
     
                 printer.setGray(500);
-                printer.fontSet(EFontTypeAscii.FONT_16_32,EFontTypeExtCode.FONT_48_24);
+                printer.fontSet(EFontTypeAscii.FONT_8_32,EFontTypeExtCode.FONT_16_32);
                 if (paymentDate != null && !paymentDate.isEmpty()) {
                     printer.printStr("Date: " + paymentDate+"\n", null);
                 }
