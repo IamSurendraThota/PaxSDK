@@ -103,7 +103,7 @@ public class PaxSDK extends CordovaPlugin {
                 printer.printStr(title+"\n", null);
     
                 printer.fontSet(EFontTypeAscii.FONT_12_24,EFontTypeExtCode.FONT_24_24);
-                printer.leftIndent(90);
+                printer.leftIndent(100);
                 printer.printStr(copyType+"\n", null);
                 printer.leftIndent(0);
                 printer.printStr("_______________________________\n", null);
