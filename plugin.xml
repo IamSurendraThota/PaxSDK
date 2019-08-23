@@ -13,9 +13,9 @@
 			</feature>
 		</config-file>
 		<config-file parent="/*" target="AndroidManifest.xml">
-		<framework src="src/android/paxsdk.gradle" custom="true" type="gradleReference"/>
 		</config-file>
 		<source-file src="src/android/PaxSDK.java" target-dir="src/paxsdk/PaxSDK" />
+		<framework src="src/android/paxsdk.gradle" custom="true" type="gradleReference" />
 		<source-file src="src/android/jniLibs/armeabi/libDeviceConfig.so" target-dir="jniLibs/armeabi" />
 		<lib-file src="src/android/libs/NeptuneLiteApi_V3.07.01_20190808.jar" />
 		<resource-file src="src/android/res/drawable/baharanlogo.png" target="res/drawable/baharanlogo.png" />
