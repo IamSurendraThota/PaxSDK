@@ -109,7 +109,7 @@ public class PaxSDK extends CordovaPlugin {
                 printer.printStr("_______________________________\n", null);
     
                 printer.setGray(500);
-                printer.fontSet(EFontTypeAscii.FONT_8_32,EFontTypeExtCode.FONT_16_32);
+                printer.fontSet(EFontTypeAscii.FONT_12_48,EFontTypeExtCode.FONT_24_48);
                 if (paymentDate != null && !paymentDate.isEmpty()) {
                     printer.printStr("Date: " + paymentDate+"\n", null);
                 }
@@ -188,7 +188,7 @@ public class PaxSDK extends CordovaPlugin {
            printer.leftIndent(0);
            printer.printStr("_______________________________\n", null);
 
-           printer.printStr("Unit Number              Amount\n",null);
+           printer.printStr("Unit Number           Amount\n",null);
            printer.printStr("_______________________________\n", null);
             Float totalAmount = 0f;
             try {
