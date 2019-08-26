@@ -226,7 +226,7 @@ public class PaxSDK extends CordovaPlugin {
             }
             printer.printStr("_______________________________\n", null);
             printer.printStr("Total                  " + String.format("%.2f", totalAmount)+"\n",null);
-            printer.printStr("_______________________________\n", null);
+            printer.printStr("_______________________________\n\n\n\n", null);
 
             int printResponse = printer.start();
 
