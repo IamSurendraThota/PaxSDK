@@ -143,9 +143,7 @@ public class PaxSDK extends CordovaPlugin {
     
                 printer.leftIndent(60);
                 printer.printStr("-- Powered by EcoPay --\n", null);
-                printer.printStr("\n", null);
-                printer.printStr("\n", null);
-                printer.printStr("\n", null);
+                printer.printStr("\n\n\n\n", null);
     
                 int printResponse = printer.start();
 
@@ -190,10 +188,8 @@ public class PaxSDK extends CordovaPlugin {
            printer.leftIndent(0);
            printer.printStr("_______________________________\n", null);
 
-           printer.printStr("Unit Number           Amount\n",null);
+           printer.printStr("Unit Number              Amount\n",null);
            printer.printStr("_______________________________\n", null);
-
-           printer.printStr("123456789abcdefghijklmnopqrstuv\n", null);
             Float totalAmount = 0f;
             try {
                 if (printData != null && printData.length() > 0) {
@@ -208,9 +204,16 @@ public class PaxSDK extends CordovaPlugin {
 
                                 int accountNumberlength=accountNumber.length();
                                 int paidAmountLength=paidAmount.length();
-                                int spacesLength=31-accountNumberlength-paidAmountLength;
+                                int spacesLength=0;
 
-                                for (int j = 0; j < spacesLength; j++) {
+                                int charsLength=accountNumberlength+paidAmountLength;
+                                if(charsLength>31){
+                                    printer.printStr("\n",null);
+                                    spacesLength=20;
+                                }else{
+                                    spacesLength=31- charsLength;
+                                }
+                                for (int k = 0; k < spacesLength; k++) {
                                     printer.printStr(" ",null);
                                 }
 
@@ -222,7 +225,7 @@ public class PaxSDK extends CordovaPlugin {
                 callbackContext.error(e.getMessage());
             }
             printer.printStr("_______________________________\n", null);
-            printer.printStr("Total                    " + Float.toString(totalAmount)+"\n",null);
+            printer.printStr("Total                  " + String.format("%f", totalAmount)+"\n",null);
             printer.printStr("_______________________________\n", null);
 
             int printResponse = printer.start();
