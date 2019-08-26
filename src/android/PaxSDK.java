@@ -127,7 +127,7 @@ public class PaxSDK extends CordovaPlugin {
                     printer.fontSet(EFontTypeAscii.FONT_12_24,EFontTypeExtCode.FONT_24_24);
                     printer.printStr("_______________________________\n", null);
                     printer.setGray(75);
-                    printer.fontSet(EFontTypeAscii.FONT_24_48,EFontTypeExtCode.FONT_48_48);
+                    printer.fontSet(EFontTypeAscii.FONT_24_24,EFontTypeExtCode.FONT_32_32);
                     printer.leftIndent(80);
                     printer.printStr("Thank You\n", null);
 
@@ -143,6 +143,8 @@ public class PaxSDK extends CordovaPlugin {
     
                 printer.leftIndent(60);
                 printer.printStr("-- Powered by EcoPay --\n", null);
+                printer.printStr("\n", null);
+                printer.printStr("\n", null);
                 printer.printStr("\n", null);
     
                 int printResponse = printer.start();
@@ -190,6 +192,8 @@ public class PaxSDK extends CordovaPlugin {
 
            printer.printStr("Unit Number           Amount\n",null);
            printer.printStr("_______________________________\n", null);
+
+           printer.printStr("123456789abcdefghijklmnopqrstuv\n", null);
             Float totalAmount = 0f;
             try {
                 if (printData != null && printData.length() > 0) {
@@ -200,7 +204,17 @@ public class PaxSDK extends CordovaPlugin {
                         totalAmount += data.has("PaidAmount")
                                 ? BigDecimal.valueOf(data.getDouble("PaidAmount")).floatValue()
                                 : 0f;
-                        printer.printStr(accountNumber + "              " + paidAmount+"\n",null);
+                                printer.printStr(accountNumber,null);
+
+                                int accountNumberlength=accountNumber.length();
+                                int paidAmountLength=paidAmount.length();
+                                int spacesLength=31-accountNumberlength-paidAmountLength;
+
+                                for (int j = 0; j < spacesLength; j++) {
+                                    printer.printStr(" ",null);
+                                }
+
+                        printer.printStr(paidAmount+"\n",null);
                     }
                 }
             } catch (Exception e) {
