@@ -209,7 +209,7 @@ public class PaxSDK extends CordovaPlugin {
                                 int charsLength=accountNumberlength+paidAmountLength;
                                 if(charsLength>31){
                                     printer.printStr("\n",null);
-                                    spacesLength=20;
+                                    spacesLength=31-paidAmountLength;
                                 }else{
                                     spacesLength=31- charsLength;
                                 }
@@ -225,7 +225,7 @@ public class PaxSDK extends CordovaPlugin {
                 callbackContext.error(e.getMessage());
             }
             printer.printStr("_______________________________\n", null);
-            printer.printStr("Total                  " + String.format("%f", totalAmount)+"\n",null);
+            printer.printStr("Total                  " + String.format("%.2f", totalAmount)+"\n",null);
             printer.printStr("_______________________________\n", null);
 
             int printResponse = printer.start();
