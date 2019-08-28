@@ -51,13 +51,18 @@ public class PaxSDK extends CordovaPlugin {
             Context context = cordova.getActivity().getApplicationContext();
             Log.d("TPP", "context Done");
 
-            cordova.getActivity().runOnUiThread(new Runnable() {
-            public void run() {
-            printer = NeptuneLiteUser.getInstance().getDal(context).getPrinter();
-            printer.init();
-            Log.d("main", "complete init");
-             }
-        });
+            try {
+                cordova.getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                    printer = NeptuneLiteUser.getInstance().getDal(context).getPrinter();
+                    printer.init();
+                    Log.d("main", "complete init");
+                     }
+                    });   
+            } catch (Exception e) {
+                System.out.println("neptuneLiteuser Initialize " + e.getMessage());
+                callbackContext.error("Printer not supported");
+            }
         } catch (Exception e) {
             // This will catch any exception, because they are all descended from Exception
             System.out.println("SystemAPi Initialize " + e.getMessage());
@@ -175,13 +180,18 @@ public class PaxSDK extends CordovaPlugin {
                 Context context = cordova.getActivity().getApplicationContext();
                 Log.d("TPP", "context Done");
 
-                cordova.getActivity().runOnUiThread(new Runnable() {
-                public void run() {
-                printer = NeptuneLiteUser.getInstance().getDal(context).getPrinter();
-                printer.init();
-                Log.d("main", "complete init");
-                 }
-            });
+                try {
+                    cordova.getActivity().runOnUiThread(new Runnable() {
+                        public void run() {
+                        printer = NeptuneLiteUser.getInstance().getDal(context).getPrinter();
+                        printer.init();
+                        Log.d("main", "complete init");
+                         }
+                        });   
+                } catch (Exception e) {
+                    System.out.println("neptuneLiteuser Initialize " + e.getMessage());
+                    callbackContext.error("Printer not supported");
+                }
             } catch (Exception e) {
                 // This will catch any exception, because they are all descended from Exception
                 System.out.println("SystemAPi Initialize " + e.getMessage());
