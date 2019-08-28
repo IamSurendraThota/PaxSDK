@@ -50,9 +50,14 @@ public class PaxSDK extends CordovaPlugin {
         try {
             Context context = cordova.getActivity().getApplicationContext();
             Log.d("TPP", "context Done");
+
+            cordova.getActivity().runOnUiThread(new Runnable() {
+            public void run() {
             printer = NeptuneLiteUser.getInstance().getDal(context).getPrinter();
             printer.init();
             Log.d("main", "complete init");
+             }
+        });
         } catch (Exception e) {
             // This will catch any exception, because they are all descended from Exception
             System.out.println("SystemAPi Initialize " + e.getMessage());
@@ -169,9 +174,14 @@ public class PaxSDK extends CordovaPlugin {
             try {
                 Context context = cordova.getActivity().getApplicationContext();
                 Log.d("TPP", "context Done");
+
+                cordova.getActivity().runOnUiThread(new Runnable() {
+                public void run() {
                 printer = NeptuneLiteUser.getInstance().getDal(context).getPrinter();
                 printer.init();
                 Log.d("main", "complete init");
+                 }
+            });
             } catch (Exception e) {
                 // This will catch any exception, because they are all descended from Exception
                 System.out.println("SystemAPi Initialize " + e.getMessage());
