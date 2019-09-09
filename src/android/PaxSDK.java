@@ -191,7 +191,7 @@ public class PaxSDK extends CordovaPlugin {
            printer.fontSet(EFontTypeAscii.FONT_12_24,EFontTypeExtCode.FONT_24_24);
            reportDate = summaryReport.has("reportTime") ? summaryReport.getString("reportTime") : null;
            if (reportDate != null && !reportDate.isEmpty()) {
-            printer.leftIndent(30);
+            printer.leftIndent(60);
             printer.printStr(reportDate, null);
         }
            printer.leftIndent(0);
