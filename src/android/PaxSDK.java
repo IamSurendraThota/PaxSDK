@@ -38,7 +38,7 @@ public class PaxSDK extends CordovaPlugin {
             return true;
         }
         if (action.equals("printSummary")) {
-            this.printSummary(args, callbackContext);
+            this.printSummary(args.getJSONObject(0), callbackContext);
             return true;
         }
         return false;
@@ -165,8 +165,8 @@ public class PaxSDK extends CordovaPlugin {
 
     }
 
-    private void printSummary(final JSONArray printData, final CallbackContext callbackContext) {
-        if (printData != null) {
+    private void printSummary(final JSONObject summaryReport, final CallbackContext callbackContext) {
+        if (summaryReport != null) {
             try {
                 Context context = cordova.getActivity().getApplicationContext();
                 Log.d("TPP", "context Done");
@@ -184,15 +184,22 @@ public class PaxSDK extends CordovaPlugin {
         try{
             printer.fontSet(EFontTypeAscii.FONT_24_48,EFontTypeExtCode.FONT_48_48);
             printer.leftIndent(20);
+            
             printer.printStr("Summary Report\n", null);
+            printer.leftIndent(30);
 
            printer.fontSet(EFontTypeAscii.FONT_12_24,EFontTypeExtCode.FONT_24_24);
+           printer.printStr(summaryReport.reportTime, null);
+
            printer.leftIndent(0);
            printer.printStr("_______________________________\n", null);
 
            printer.printStr("Unit Number              Amount\n",null);
            printer.printStr("_______________________________\n", null);
             Float totalAmount = 0f;
+
+            JSONArray printData=summaryReport.payments;
+            
             try {
                 if (printData != null && printData.length() > 0) {
                     for (int i = 0; i < printData.length(); i++) {
