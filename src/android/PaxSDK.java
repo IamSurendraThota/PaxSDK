@@ -201,7 +201,7 @@ public class PaxSDK extends CordovaPlugin {
            printer.printStr("_______________________________\n", null);
             Float totalAmount = 0f;
 
-            JSONArray printData=summaryReport.payments;
+            JSONArray printData =summaryReport.has("payments") ? summaryReport.getJSONArray("payments") : null;
             
             try {
                 if (printData != null && printData.length() > 0) {
