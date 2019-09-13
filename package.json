@@ -8,12 +8,6 @@
       "android"
     ]
   },
-  "dependencies": {
-    "plugman": "undefined3.0.1"
-  },
-  "devDependencies": {
-    "plugman": "undefined3.0.1"
-  },
   "keywords": [
     "ecosystem:cordova",
     "cordova-android"
