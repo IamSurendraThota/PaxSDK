@@ -15,9 +15,9 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import java.math.BigDecimal;
+import java.util.*;
 
 /* SDK Related Imports */
-import com.pax.dal;
 import com.pax.dal.IPrinter;
 import com.pax.neptunelite.api.NeptuneLiteUser;
 import com.pax.dal.entity.EFontTypeAscii;
@@ -50,7 +50,10 @@ public class PaxSDK extends CordovaPlugin {
     }
 
     private void getSerialNumber(CallbackContext callbackContext) {
-        Map<ETermInfoKey, String> termInfo = dal.getSys().getTermInfo();
+        Context context = cordova.getActivity().getApplicationContext();
+        Log.d("IIP-getSerialNumber", "context Done");
+
+        Map<ETermInfoKey, String> termInfo = NeptuneLiteUser.getInstance().getDal(context).getSys().getTermInfo();
 
         if (termInfo != null) {
             callbackContext.success(termInfo.get(ETermInfoKey.SN));
