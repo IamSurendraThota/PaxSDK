@@ -50,14 +50,19 @@ public class PaxSDK extends CordovaPlugin {
     }
 
     private void getSerialNumber(CallbackContext callbackContext) {
-        Context context = cordova.getActivity().getApplicationContext();
-        Log.d("IIP-getSerialNumber", "context Done");
+        try {
+            Context context = cordova.getActivity().getApplicationContext();
+            Log.d("IIP-getSerialNumber", "context Done");
 
-        Map<ETermInfoKey, String> termInfo = NeptuneLiteUser.getInstance().getDal(context).getSys().getTermInfo();
+            Map<ETermInfoKey, String> termInfo = NeptuneLiteUser.getInstance().getDal(context).getSys().getTermInfo();
 
-        if (termInfo != null) {
-            callbackContext.success(termInfo.get(ETermInfoKey.SN));
-        } else {
+            if (termInfo != null) {
+                callbackContext.success(termInfo.get(ETermInfoKey.SN));
+            } else {
+                callbackContext.error("Getting Device terminal Serial Number Error");
+            }
+        } catch (Exception e) {
+            System.out.println("SystemAPi Initialize " + e.getMessage());
             callbackContext.error("Getting Device terminal Serial Number Error");
         }
     }
