@@ -7,3 +7,7 @@ exports.printSummary = function (arg0, success, error) {
 exports.printReceipt = function (arg0, success, error) {
     exec(success, error, 'PaxSDK', 'printReceipt', [arg0]);
 };
+
+exports.getSerialNumber = function (arg0, success, error) {
+    exec(success, error, 'PaxSDK', 'getSerialNumber', [arg0]);
+};
